@@ -1,1 +1,3 @@
-console.log("hello world");
+import "./db/connection";
+
+console.log("hello backend!");
