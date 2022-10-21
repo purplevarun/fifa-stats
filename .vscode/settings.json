@@ -3,5 +3,12 @@
 	"prettier.printWidth": 80,
 	"prettier.useTabs": true,
 	"editor.tabSize": 4,
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
+	"files.exclude": {
+		"**/backend/node_modules": true,
+		"**/backend/yarn.lock": true,
+		"**/frontend/node_modules": true,
+		"**/frontend/yarn.lock": true,
+		"**/.git": false
+	}
 }
