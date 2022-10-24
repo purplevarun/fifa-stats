@@ -11,19 +11,26 @@ const Button = ({ path, text, size }: Props) => {
 	const handleClick = () => {
 		navigate(path);
 	};
+	const defaultSize = size ? size : "medium";
 	const font = {
 		small: "15px",
 		medium: "25px",
 		large: "40px",
 	};
-	const btnSize = font[size ? size : "medium"];
+	const btnSize = font[defaultSize];
+	const width = {
+		small: "100px",
+		medium: "150px",
+		large: "250px",
+	};
+	const btnWidth = width[defaultSize];
 
 	return (
 		<button
 			style={{
 				padding: "10px",
 				fontSize: btnSize,
-				width: "150px",
+				width: btnWidth,
 				borderRadius: "8px",
 			}}
 			onClick={handleClick}
