@@ -1,4 +1,12 @@
+import Button from "../../components/Button";
+import Layout from "../../components/Layout";
+
 const View = () => {
-	return <h1>View Page</h1>;
+	return (
+		<Layout>
+			<Button text="player stats" path="/view/player" />
+			<Button text="season stats" path="/view/season" />
+		</Layout>
+	);
 };
 export default View;

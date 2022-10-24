@@ -1,12 +1,12 @@
 import Button from "../../components/Button";
-import HomeLayout from "./HomeLayout";
+import Layout from "../../components/Layout";
 
 const Home = () => {
 	return (
-		<HomeLayout>
-			<Button text="view" path="/view" size="large" />
-			<Button text="edit" path="/edit" size="large" />
-		</HomeLayout>
+		<Layout>
+			<Button text="view" path="/view" />
+			<Button text="edit" path="/edit" />
+		</Layout>
 	);
 };
 export default Home;
