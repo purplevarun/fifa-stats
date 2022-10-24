@@ -5,14 +5,12 @@ import View from "../pages/View/View";
 
 const RouteManager = () => {
 	return (
-		<BrowserRouter basename="/fifa-stats">
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/view" element={<View />} />
-				<Route path="/edit" element={<Edit />} />
-				<Route path="*" element={<Navigate to="/" replace />} />
-			</Routes>
-		</BrowserRouter>
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/view" element={<View />} />
+			<Route path="/edit" element={<Edit />} />
+			<Route path="*" element={<Navigate to="/" replace />} />
+		</Routes>
 	);
 };
 export default RouteManager;

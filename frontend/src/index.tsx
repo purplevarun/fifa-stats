@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import RouteManager from "./routes/RouteManager";
+import App from "./app/App";
 
 const app = document.getElementById("root") as HTMLElement;
 const root = ReactDOM.createRoot(app);
-root.render(<RouteManager />);
+root.render(<App />);

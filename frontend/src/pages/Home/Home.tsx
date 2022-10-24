@@ -1,11 +1,11 @@
-import HomeBtn from "./HomeBtn";
+import Button from "../../components/Button";
 import HomeLayout from "./HomeLayout";
 
 const Home = () => {
 	return (
 		<HomeLayout>
-			<HomeBtn path="/view" />
-			<HomeBtn path="/edit" />
+			<Button text="view" path="/view" size="large" />
+			<Button text="edit" path="/edit" size="large" />
 		</HomeLayout>
 	);
 };
