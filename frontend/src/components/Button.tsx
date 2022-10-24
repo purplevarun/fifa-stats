@@ -20,7 +20,7 @@ const Button = ({ path, text, size }: Props) => {
 	const btnSize = font[defaultSize];
 	const width = {
 		small: "100px",
-		medium: "150px",
+		medium: "200px",
 		large: "250px",
 	};
 	const btnWidth = width[defaultSize];
@@ -30,7 +30,7 @@ const Button = ({ path, text, size }: Props) => {
 			style={{
 				padding: "10px",
 				fontSize: btnSize,
-				width: btnWidth,
+				minWidth: btnWidth,
 				borderRadius: "8px",
 			}}
 			onClick={handleClick}
