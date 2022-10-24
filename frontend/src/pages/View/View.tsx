@@ -1,11 +1,11 @@
-import Button from "../../components/Button";
+import NavigationButton from "../../components/NavigationButton";
 import PageLayout from "../../components/PageLayout";
 
 const View = () => {
 	return (
 		<PageLayout>
-			<Button text="player stats" path="/view/players" />
-			<Button text="season stats" path="/view/seasons" />
+			<NavigationButton text="player stats" path="/view/players" />
+			<NavigationButton text="season stats" path="/view/seasons" />
 		</PageLayout>
 	);
 };

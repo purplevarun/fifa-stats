@@ -6,7 +6,7 @@ type Props = {
 	size?: "small" | "medium" | "large";
 };
 
-const Button = ({ path, text, size }: Props) => {
+const NavigationButton = ({ path, text, size }: Props) => {
 	const navigate = useNavigate();
 	const handleClick = () => {
 		navigate(path);
@@ -39,4 +39,4 @@ const Button = ({ path, text, size }: Props) => {
 		</button>
 	);
 };
-export default Button;
+export default NavigationButton;

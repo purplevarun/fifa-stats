@@ -3,6 +3,7 @@ type Props = {
 	setValue: (value: string) => void;
 	placeholder: string;
 	type: "text" | "number";
+	size: "small" | "medium" | "large";
 };
 type eventType = {
 	target: {
@@ -10,7 +11,7 @@ type eventType = {
 	};
 };
 
-const Input = ({ value, setValue, placeholder, type }: Props) => {
+const Input = ({ value, setValue, placeholder, type, size }: Props) => {
 	const handleChange = (event: eventType) => {
 		const newValue = event.target.value;
 		if (type === "number") {
@@ -22,6 +23,12 @@ const Input = ({ value, setValue, placeholder, type }: Props) => {
 			setValue(newValue);
 		}
 	};
+	const widthMap = {
+		small: "200px",
+		medium: "300px",
+		large: "400px",
+	};
+	const inputWidth = widthMap[size];
 	return (
 		<input
 			type="text"
@@ -33,7 +40,7 @@ const Input = ({ value, setValue, placeholder, type }: Props) => {
 				borderWidth: "2px",
 				borderColor: "black",
 				borderRadius: "10px",
-				width: "400px",
+				width: inputWidth,
 			}}
 			value={value}
 			onChange={handleChange}

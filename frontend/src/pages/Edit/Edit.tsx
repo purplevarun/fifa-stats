@@ -1,11 +1,11 @@
-import Button from "../../components/Button";
+import NavigationButton from "../../components/NavigationButton";
 import PageLayout from "../../components/PageLayout";
 
 const Edit = () => {
 	return (
 		<PageLayout>
-			<Button text="add stats" path="/edit/add" />
-			<Button text="update stats" path="/edit/update" />
+			<NavigationButton text="add stats" path="/edit/add" />
+			<NavigationButton text="update stats" path="/edit/update" />
 		</PageLayout>
 	);
 };

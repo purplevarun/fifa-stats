@@ -1,9 +1,9 @@
-import Button from "../components/Button";
+import NavigationButton from "../components/NavigationButton";
 
 const BackButton = () => {
 	return (
 		<div style={{ position: "absolute", left: "10px", top: "10px" }}>
-			<Button text="home" path="/" size="small" />
+			<NavigationButton text="home" path="/" size="small" />
 		</div>
 	);
 };
