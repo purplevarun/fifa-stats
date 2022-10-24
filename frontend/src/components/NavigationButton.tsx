@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 type Props = {
 	text: string;
@@ -11,32 +12,7 @@ const NavigationButton = ({ path, text, size }: Props) => {
 	const handleClick = () => {
 		navigate(path);
 	};
-	const defaultSize = size ? size : "medium";
-	const font = {
-		small: "15px",
-		medium: "25px",
-		large: "40px",
-	};
-	const btnSize = font[defaultSize];
-	const width = {
-		small: "100px",
-		medium: "200px",
-		large: "250px",
-	};
-	const btnWidth = width[defaultSize];
 
-	return (
-		<button
-			style={{
-				padding: "10px",
-				fontSize: btnSize,
-				minWidth: btnWidth,
-				borderRadius: "8px",
-			}}
-			onClick={handleClick}
-		>
-			{text}
-		</button>
-	);
+	return <Button text={text} size={size} handleClick={handleClick} />;
 };
 export default NavigationButton;
