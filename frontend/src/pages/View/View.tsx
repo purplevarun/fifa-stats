@@ -4,8 +4,8 @@ import Layout from "../../components/Layout";
 const View = () => {
 	return (
 		<Layout>
-			<Button text="player stats" path="/view/player" />
-			<Button text="season stats" path="/view/season" />
+			<Button text="player stats" path="/view/players" />
+			<Button text="season stats" path="/view/seasons" />
 		</Layout>
 	);
 };
