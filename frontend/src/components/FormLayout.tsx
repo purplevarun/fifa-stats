@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
-const PageLayout = ({ children }: { children: ReactNode }) => {
+const FormLayout = ({ children }: { children: ReactNode }) => {
 	return (
-		<div
+		<form
 			style={{
 				display: "flex",
 				flexDirection: "column",
@@ -12,9 +12,10 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
 				justifyContent: "center",
 				alignItems: "center",
 			}}
+			onSubmit={(event) => event.preventDefault()}
 		>
 			{children}
-		</div>
+		</form>
 	);
 };
-export default PageLayout;
+export default FormLayout;
