@@ -9,6 +9,6 @@
 		"**/backend/yarn.lock": true,
 		"**/frontend/node_modules": true,
 		"**/frontend/yarn.lock": true,
-		"**/.git": false
+		"**/.git": true
 	}
 }
