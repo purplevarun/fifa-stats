@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-const HomeLayout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
 	return (
 		<div
 			style={{
@@ -17,4 +17,4 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
 		</div>
 	);
 };
-export default HomeLayout;
+export default Layout;
