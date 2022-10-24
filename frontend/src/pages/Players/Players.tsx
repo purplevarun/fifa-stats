@@ -1,6 +1,6 @@
-import Layout from "../../components/Layout";
+import PageLayout from "../../components/PageLayout";
 
 const Players = () => {
-	return <Layout>player stats</Layout>;
+	return <PageLayout>player stats</PageLayout>;
 };
 export default Players;

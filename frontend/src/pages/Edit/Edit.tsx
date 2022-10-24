@@ -1,12 +1,12 @@
 import Button from "../../components/Button";
-import Layout from "../../components/Layout";
+import PageLayout from "../../components/PageLayout";
 
 const Edit = () => {
 	return (
-		<Layout>
+		<PageLayout>
 			<Button text="add stats" path="/edit/add" />
 			<Button text="update stats" path="/edit/update" />
-		</Layout>
+		</PageLayout>
 	);
 };
 export default Edit;

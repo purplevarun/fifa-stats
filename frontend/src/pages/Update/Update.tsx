@@ -1,6 +1,6 @@
-import Layout from "../../components/Layout";
+import PageLayout from "../../components/PageLayout";
 
 const Update = () => {
-	return <Layout>update stats</Layout>;
+	return <PageLayout>update stats</PageLayout>;
 };
 export default Update;

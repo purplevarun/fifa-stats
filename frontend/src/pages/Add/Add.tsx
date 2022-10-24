@@ -1,6 +1,6 @@
-import Layout from "../../components/Layout";
+import PageLayout from "../../components/PageLayout";
 
 const Add = () => {
-	return <Layout>add stats</Layout>;
+	return <PageLayout>add stats</PageLayout>;
 };
 export default Add;

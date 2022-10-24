@@ -1,12 +1,12 @@
 import Button from "../../components/Button";
-import Layout from "../../components/Layout";
+import PageLayout from "../../components/PageLayout";
 
 const View = () => {
 	return (
-		<Layout>
+		<PageLayout>
 			<Button text="player stats" path="/view/players" />
 			<Button text="season stats" path="/view/seasons" />
-		</Layout>
+		</PageLayout>
 	);
 };
 export default View;

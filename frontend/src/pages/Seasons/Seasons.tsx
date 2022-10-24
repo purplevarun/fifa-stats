@@ -1,6 +1,6 @@
-import Layout from "../../components/Layout";
+import PageLayout from "../../components/PageLayout";
 
 const Seasons = () => {
-	return <Layout>Season stats</Layout>;
+	return <PageLayout>Season stats</PageLayout>;
 };
 export default Seasons;
