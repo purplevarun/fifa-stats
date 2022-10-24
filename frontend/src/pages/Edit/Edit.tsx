@@ -5,7 +5,7 @@ const Edit = () => {
 	return (
 		<Layout>
 			<Button text="add stats" path="/edit/add" />
-			<Button text="edit stats" path="/edit/edit" />
+			<Button text="update stats" path="/edit/update" />
 		</Layout>
 	);
 };
