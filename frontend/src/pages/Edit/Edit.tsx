@@ -4,8 +4,9 @@ import PageLayout from "../../components/PageLayout";
 const Edit = () => {
 	return (
 		<PageLayout>
-			<NavigationButton text="add stats" path="/edit/add" />
-			<NavigationButton text="update stats" path="/edit/update" />
+			<NavigationButton text="add player" path="/edit/add" />
+			<NavigationButton text="update player" path="/edit/update" />
+			<NavigationButton text="change status" path="/edit/status" />
 		</PageLayout>
 	);
 };

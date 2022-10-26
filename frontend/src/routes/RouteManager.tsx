@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Add from "../pages/Add/Add";
+import AddPlayer from "../pages/AddPlayer";
 import Edit from "../pages/Edit/Edit";
 import Home from "../pages/Home/Home";
 import Players from "../pages/Players/Players";
@@ -15,8 +16,9 @@ const RouteManager = () => {
 			<Route path="/view/players" element={<Players />} />
 			<Route path="/view/seasons" element={<Seasons />} />
 			<Route path="/edit" element={<Edit />} />
-			<Route path="/edit/add" element={<Add />} />
-			<Route path="/edit/update" element={<Update />} />
+			<Route path="/edit/add" element={<AddPlayer />} />
+			<Route path="/edit/update" element={<Add />} />
+			<Route path="/edit/status" element={<Update />} />
 			<Route path="*" element={<Navigate to="/" replace />} />
 		</Routes>
 	);
