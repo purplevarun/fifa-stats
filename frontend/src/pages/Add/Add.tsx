@@ -6,6 +6,8 @@ import Button from "../../components/Button";
 import getRoundedOffValue from "../../lib/getRoundedOffValue";
 import isFormComplete from "../../lib/isFormComplete";
 import axios from "axios";
+import PlayerSeasonType from "../../types/PlayerSeasonType";
+import AlertBox from "../../components/AlertBox";
 
 const Add = () => {
 	const [name, setName] = useState("");
@@ -27,6 +29,49 @@ const Add = () => {
 	const [hattricks, setHattricks] = useState("");
 	const [cleanSheets, setCleanSheets] = useState("");
 	const [photo, setPhoto] = useState("");
+	const [showAlert, setShowAlert] = useState<
+		null | "successful" | "unsuccessful"
+	>(null);
+
+	const clearStates = () => {
+		setName("");
+		setAge("");
+		setSeason("");
+		setShirtNumber("");
+		setLeagueGames("");
+		setCupGames("");
+		setUclGames("");
+		setLeagueGoals("");
+		setCupGoals("");
+		setUclGoals("");
+		setLeagueAssists("");
+		setCupAssists("");
+		setUclAssists("");
+		setRating("");
+		setYellowCards("");
+		setRedCards("");
+		setHattricks("");
+		setCleanSheets("");
+		setPhoto("");
+	};
+
+	const setAlert = (type: "successful" | "unsuccessful") => {
+		setShowAlert(type);
+		setTimeout(() => {
+			setShowAlert(null);
+		}, 2000);
+	};
+
+	const sendData = async (data: PlayerSeasonType) => {
+		const url = process.env.REACT_APP_API_URL + "/add";
+		const response = await axios.post(url, data);
+		if (response.data === 201) {
+			clearStates();
+			setAlert("successful");
+		} else {
+			setAlert("unsuccessful");
+		}
+	};
 
 	const handleClick = async () => {
 		const totalGames =
@@ -76,15 +121,15 @@ const Add = () => {
 			photo,
 		};
 		if (isFormComplete(data)) {
-			const url = process.env.REACT_APP_API_URL + "/add";
-			await axios.post(url, data);
+			await sendData(data);
 		} else {
-			alert("form is imcomplete!");
+			setAlert("unsuccessful");
 		}
 	};
 
 	return (
 		<FormLayout>
+			{showAlert && <AlertBox type={showAlert} />}
 			<HorizontalLayout>
 				<Input
 					value={name}
