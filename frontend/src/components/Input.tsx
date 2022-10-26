@@ -44,6 +44,7 @@ const Input = ({ value, setValue, placeholder, type, size }: Props) => {
 			}}
 			value={value}
 			onChange={handleChange}
+			required
 		/>
 	);
 };

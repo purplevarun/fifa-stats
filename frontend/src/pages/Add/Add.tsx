@@ -9,27 +9,81 @@ const Add = () => {
 	const [age, setAge] = useState("");
 	const [season, setSeason] = useState("");
 	const [shirtNumber, setShirtNumber] = useState("");
-	const [appearances, setAppearances] = useState("");
+	const [leagueGames, setLeagueGames] = useState("");
+	const [cupGames, setCupGames] = useState("");
+	const [uclGames, setUclGames] = useState("");
 	const [leagueGoals, setLeagueGoals] = useState("");
 	const [cupGoals, setCupGoals] = useState("");
 	const [uclGoals, setUclGoals] = useState("");
-	const [assists, setAssists] = useState("");
+	const [leagueAssists, setLeagueAssists] = useState("");
+	const [cupAssists, setCupAssists] = useState("");
+	const [uclAssists, setUclAssists] = useState("");
 	const [rating, setRating] = useState("");
 	const [yellowCards, setYellowCards] = useState("");
 	const [redCards, setRedCards] = useState("");
 	const [hattricks, setHattricks] = useState("");
 
-	const handleClick = () => {};
+	const ROUND_OFF_FACTOR = 100;
+
+	const getRoundedOffValue = (numerator: number, denominator: number) => {
+		const ratio = numerator / denominator;
+		return Math.round(ratio * ROUND_OFF_FACTOR) / ROUND_OFF_FACTOR;
+	};
+
+	const handleClick = () => {
+		const totalGames =
+			parseInt(leagueGames) + parseInt(cupGames) + parseInt(uclGames);
+		const totalGoals =
+			parseInt(leagueGoals) + parseInt(cupGoals) + parseInt(uclGoals);
+		const totalAssists =
+			parseInt(leagueAssists) +
+			parseInt(cupAssists) +
+			parseInt(uclAssists);
+		const goalsPerGame = getRoundedOffValue(totalGoals, totalGames);
+		const contributions = totalGoals + totalAssists;
+		const contributionsPerGame = getRoundedOffValue(
+			contributions,
+			totalGames
+		);
+		const data = {
+			name: name,
+			age: parseInt(age),
+			season: parseInt(season),
+			shirtNumber: parseInt(season),
+			leagueGames: parseInt(leagueGames),
+			cupGames: parseInt(cupGames),
+			uclGames: parseInt(uclGames),
+			totalGames,
+			leagueGoals: parseInt(leagueGoals),
+			cupGoals: parseInt(cupGoals),
+			uclGoals: parseInt(uclGoals),
+			leagueAssists: parseInt(leagueAssists),
+			cupAssists: parseInt(cupAssists),
+			uclAssists: parseInt(uclAssists),
+			totalAssists,
+			rating: parseFloat(rating),
+			yellowCards: parseInt(yellowCards),
+			redCards: parseInt(redCards),
+			hattricks: parseInt(hattricks),
+			totalGoals,
+			contributions,
+			goalsPerGame,
+			contributionsPerGame,
+		};
+		console.log(data);
+	};
 
 	return (
 		<FormLayout>
-			<Input
-				value={name}
-				setValue={setName}
-				placeholder="name"
-				type="text"
-				size="medium"
-			/>
+			<HorizontalLayout>
+				<Input
+					value={name}
+					setValue={setName}
+					placeholder="name"
+					type="text"
+					size="medium"
+				/>
+			</HorizontalLayout>
 			<HorizontalLayout>
 				<Input
 					value={age}
@@ -53,13 +107,29 @@ const Add = () => {
 					size="small"
 				/>
 			</HorizontalLayout>
-			<Input
-				value={appearances}
-				setValue={setAppearances}
-				placeholder="appearances"
-				type="number"
-				size="small"
-			/>
+			<HorizontalLayout>
+				<Input
+					value={leagueGames}
+					setValue={setLeagueGames}
+					placeholder="league games"
+					type="number"
+					size="small"
+				/>
+				<Input
+					value={cupGames}
+					setValue={setCupGames}
+					placeholder="cup games"
+					type="number"
+					size="small"
+				/>
+				<Input
+					value={uclGames}
+					setValue={setUclGames}
+					placeholder="ucl games"
+					type="number"
+					size="small"
+				/>
+			</HorizontalLayout>
 			<HorizontalLayout>
 				<Input
 					value={leagueGoals}
@@ -85,12 +155,28 @@ const Add = () => {
 			</HorizontalLayout>
 			<HorizontalLayout>
 				<Input
-					value={assists}
-					setValue={setAssists}
-					placeholder="assists"
+					value={leagueAssists}
+					setValue={setLeagueAssists}
+					placeholder="league assists"
 					type="number"
 					size="small"
 				/>
+				<Input
+					value={cupAssists}
+					setValue={setCupAssists}
+					placeholder="cup assists"
+					type="number"
+					size="small"
+				/>
+				<Input
+					value={uclAssists}
+					setValue={setUclAssists}
+					placeholder="ucl assists"
+					type="number"
+					size="small"
+				/>
+			</HorizontalLayout>
+			<HorizontalLayout>
 				<Input
 					value={rating}
 					setValue={setRating}
@@ -105,8 +191,6 @@ const Add = () => {
 					type="number"
 					size="small"
 				/>
-			</HorizontalLayout>
-			<HorizontalLayout>
 				<Input
 					value={yellowCards}
 					setValue={setYellowCards}
