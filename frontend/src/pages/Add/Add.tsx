@@ -8,6 +8,7 @@ const Add = () => {
 	const [name, setName] = useState("");
 	const [age, setAge] = useState("");
 	const [season, setSeason] = useState("");
+	const [shirtNumber, setShirtNumber] = useState("");
 	const [appearances, setAppearances] = useState("");
 	const [leagueGoals, setLeagueGoals] = useState("");
 	const [cupGoals, setCupGoals] = useState("");
@@ -41,6 +42,13 @@ const Add = () => {
 					value={season}
 					setValue={setSeason}
 					placeholder="season"
+					type="number"
+					size="small"
+				/>
+				<Input
+					value={shirtNumber}
+					setValue={setShirtNumber}
+					placeholder="shirt number"
 					type="number"
 					size="small"
 				/>
