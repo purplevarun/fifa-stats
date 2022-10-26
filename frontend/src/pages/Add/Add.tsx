@@ -3,6 +3,8 @@ import FormLayout from "../../components/FormLayout";
 import HorizontalLayout from "../../components/HorizontalLayout";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import getRoundedOffValue from "../../lib/getRoundedOffValue";
+import isFormComplete from "../../lib/isFormComplete";
 
 const Add = () => {
 	const [name, setName] = useState("");
@@ -22,13 +24,6 @@ const Add = () => {
 	const [yellowCards, setYellowCards] = useState("");
 	const [redCards, setRedCards] = useState("");
 	const [hattricks, setHattricks] = useState("");
-
-	const ROUND_OFF_FACTOR = 100;
-
-	const getRoundedOffValue = (numerator: number, denominator: number) => {
-		const ratio = numerator / denominator;
-		return Math.round(ratio * ROUND_OFF_FACTOR) / ROUND_OFF_FACTOR;
-	};
 
 	const handleClick = () => {
 		const totalGames =
@@ -70,7 +65,9 @@ const Add = () => {
 			goalsPerGame,
 			contributionsPerGame,
 		};
-		console.log(data);
+		if (isFormComplete(data)) {
+			console.log(data);
+		}
 	};
 
 	return (

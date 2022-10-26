@@ -1,0 +1,25 @@
+type PlayerSeasonNumeralKeyType =
+	| "age"
+	| "season"
+	| "shirtNumber"
+	| "leagueGames"
+	| "cupGames"
+	| "uclGames"
+	| "totalGames"
+	| "leagueGoals"
+	| "cupGoals"
+	| "uclGoals"
+	| "leagueAssists"
+	| "cupAssists"
+	| "uclAssists"
+	| "totalAssists"
+	| "rating"
+	| "yellowCards"
+	| "redCards"
+	| "hattricks"
+	| "totalGoals"
+	| "contributions"
+	| "goalsPerGame"
+	| "contributionsPerGame";
+
+export default PlayerSeasonNumeralKeyType;
