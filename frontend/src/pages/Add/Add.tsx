@@ -5,6 +5,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import getRoundedOffValue from "../../lib/getRoundedOffValue";
 import isFormComplete from "../../lib/isFormComplete";
+import axios from "axios";
 
 const Add = () => {
 	const [name, setName] = useState("");
@@ -24,8 +25,10 @@ const Add = () => {
 	const [yellowCards, setYellowCards] = useState("");
 	const [redCards, setRedCards] = useState("");
 	const [hattricks, setHattricks] = useState("");
+	const [cleanSheets, setCleanSheets] = useState("");
+	const [photo, setPhoto] = useState("");
 
-	const handleClick = () => {
+	const handleClick = async () => {
 		const totalGames =
 			parseInt(leagueGames) + parseInt(cupGames) + parseInt(uclGames);
 		const totalGoals =
@@ -40,6 +43,10 @@ const Add = () => {
 			contributions,
 			totalGames
 		);
+		const cleanSheetsPerGame = getRoundedOffValue(
+			parseInt(cleanSheets),
+			totalGames
+		);
 		const data = {
 			name: name,
 			age: parseInt(age),
@@ -52,6 +59,7 @@ const Add = () => {
 			leagueGoals: parseInt(leagueGoals),
 			cupGoals: parseInt(cupGoals),
 			uclGoals: parseInt(uclGoals),
+			totalGoals,
 			leagueAssists: parseInt(leagueAssists),
 			cupAssists: parseInt(cupAssists),
 			uclAssists: parseInt(uclAssists),
@@ -60,13 +68,18 @@ const Add = () => {
 			yellowCards: parseInt(yellowCards),
 			redCards: parseInt(redCards),
 			hattricks: parseInt(hattricks),
-			totalGoals,
 			contributions,
 			goalsPerGame,
 			contributionsPerGame,
+			cleanSheets: parseInt(cleanSheets),
+			cleanSheetsPerGame,
+			photo,
 		};
 		if (isFormComplete(data)) {
-			console.log(data);
+			const url = process.env.REACT_APP_API_URL + "/add";
+			await axios.post(url, data);
+		} else {
+			alert("form is imcomplete!");
 		}
 	};
 
@@ -77,6 +90,13 @@ const Add = () => {
 					value={name}
 					setValue={setName}
 					placeholder="name"
+					type="text"
+					size="medium"
+				/>
+				<Input
+					value={photo}
+					setValue={setPhoto}
+					placeholder="photo link"
 					type="text"
 					size="medium"
 				/>
@@ -188,6 +208,15 @@ const Add = () => {
 					type="number"
 					size="small"
 				/>
+				<Input
+					value={cleanSheets}
+					setValue={setCleanSheets}
+					placeholder="clean sheets"
+					type="number"
+					size="small"
+				/>
+			</HorizontalLayout>
+			<HorizontalLayout>
 				<Input
 					value={yellowCards}
 					setValue={setYellowCards}

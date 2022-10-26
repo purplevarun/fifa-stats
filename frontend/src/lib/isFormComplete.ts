@@ -4,7 +4,7 @@ import PlayerSeasonType from "../types/PlayerSeasonType";
 const isFormComplete = (data: PlayerSeasonType) => {
 	const keys = Object.keys(data);
 	for (const key of keys) {
-		if (key === "name") {
+		if (key === "name" || key === "photo") {
 			if (data[key].length === 0) {
 				return false;
 			}

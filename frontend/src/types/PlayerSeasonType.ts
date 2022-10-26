@@ -1,5 +1,6 @@
 type PlayerSeasonType = {
 	name: string;
+	photo: string;
 	age: number;
 	season: number;
 	shirtNumber: number;
