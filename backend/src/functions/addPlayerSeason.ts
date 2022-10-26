@@ -5,7 +5,10 @@ const router = Router();
 
 router.post("/", (req, res) => {
 	const body = req.body;
-	const newPlayerSeasonModel = new PlayerSeasonModel({ ...body });
+	const newPlayerSeasonModel = new PlayerSeasonModel({
+		...body,
+		status: "active",
+	});
 	newPlayerSeasonModel
 		.save()
 		.then(() => {

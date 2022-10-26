@@ -26,6 +26,7 @@ const PlayerSeasonSchema = new Schema({
 	contributionsPerGame: Schema.Types.Number,
 	cleanSheets: Schema.Types.Number,
 	photo: Schema.Types.String,
+	status: Schema.Types.String,
 });
 
 const PlayerSeasonModel = model("PlayerSeason", PlayerSeasonSchema);
