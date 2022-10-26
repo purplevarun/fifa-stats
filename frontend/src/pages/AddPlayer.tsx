@@ -1,4 +1,6 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import AlertBox from "../components/AlertBox";
 import Button from "../components/Button";
 import FormLayout from "../components/FormLayout";
 import Input from "../components/Input";
@@ -9,14 +11,44 @@ const AddPlayer = () => {
 	const [age, setAge] = useState("");
 	const [nationality, setNationality] = useState("");
 	const [position, setPosition] = useState("");
+	const [showAlert, setShowAlert] = useState<
+		null | "successful" | "unsuccessful"
+	>(null);
 
+	const setAlert = (type: "successful" | "unsuccessful") => {
+		setShowAlert(type);
+		setTimeout(() => {
+			setShowAlert(null);
+		}, 2000);
+	};
+	const clearStates = () => {
+		setName("");
+		setPhoto("");
+		setAge("");
+		setNationality("");
+		setPosition("");
+	};
 	const handleClick = async () => {
 		const data = { name, photo, age, nationality, position };
 		const url = process.env.REACT_APP_API_URL + "/add-player";
+		const response = await axios.post(url, data);
+		if (response.data.status === 201) {
+			clearStates();
+			setAlert("successful");
+		} else {
+			setAlert("unsuccessful");
+		}
 	};
+
+	const [renderPhoto, setRenderPhoto] = useState(false);
+
+	useEffect(() => {
+		setRenderPhoto(photo.length > 0);
+	}, [photo]);
 
 	return (
 		<FormLayout>
+			{showAlert && <AlertBox type={showAlert} />}
 			<Input
 				value={name}
 				setValue={setName}
@@ -24,13 +56,17 @@ const AddPlayer = () => {
 				type="text"
 				size="large"
 			/>
-			<Input
-				value={photo}
-				setValue={setPhoto}
-				placeholder="photo"
-				type="text"
-				size="large"
-			/>
+			{renderPhoto ? (
+				<img src={photo} alt="player" width={150} />
+			) : (
+				<Input
+					value={photo}
+					setValue={setPhoto}
+					placeholder="photo"
+					type="text"
+					size="large"
+				/>
+			)}
 			<Input
 				value={age}
 				setValue={setAge}
