@@ -4,6 +4,7 @@ import cors from "cors";
 import addPlayerSeason from "./functions/addPlayerSeason";
 import addPlayer from "./functions/addPlayer";
 import getPlayers from "./functions/getPlayers";
+import updatePlayerStatus from "./functions/updatePlayerStatus";
 
 const PORT = process.env.PORT as string;
 const app = express();
@@ -16,6 +17,7 @@ app.use(cors());
 app.use("/add-player", addPlayer);
 app.use("/get-players", getPlayers);
 app.use("/add-player-season", addPlayerSeason);
+app.use("/update-player-status", updatePlayerStatus);
 
 app.listen(PORT, () => {
 	console.log("express server started @", PORT);
