@@ -6,6 +6,7 @@ import Players from "../pages/Players/Players";
 import Seasons from "../pages/Seasons/Seasons";
 import SelectPlayerToUpdate from "../pages/SelectPlayerToUpdate";
 import Update from "../pages/Update/Update";
+import UpdatePlayer from "../pages/UpdatePlayer";
 import View from "../pages/View/View";
 
 const RouteManager = () => {
@@ -18,10 +19,7 @@ const RouteManager = () => {
 			<Route path="/edit" element={<Edit />} />
 			<Route path="/edit/add" element={<AddPlayer />} />
 			<Route path="/edit/update" element={<SelectPlayerToUpdate />} />
-			<Route
-				path="/edit/update/:playerID"
-				element={<SelectPlayerToUpdate />}
-			/>
+			<Route path="/edit/update/:playerID" element={<UpdatePlayer />} />
 			<Route path="/edit/status" element={<Update />} />
 			<Route path="*" element={<Navigate to="/" replace />} />
 		</Routes>

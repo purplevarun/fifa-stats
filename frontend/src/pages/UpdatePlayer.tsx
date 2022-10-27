@@ -1,17 +1,23 @@
-import { useState } from "react";
-import FormLayout from "../../components/FormLayout";
-import HorizontalLayout from "../../components/HorizontalLayout";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import roundoff from "../../lib/roundoff";
-import isFormComplete from "../../lib/isComplete";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import PlayerSeasonType from "../../types/PlayerSeasonType";
-import AlertBox from "../../components/AlertBox";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import AlertBox from "../components/AlertBox";
+import Button from "../components/Button";
+import FormLayout from "../components/FormLayout";
+import HorizontalLayout from "../components/HorizontalLayout";
+import Input from "../components/Input";
+import isComplete from "../lib/isComplete";
+import roundoff from "../lib/roundoff";
 
-const Add = () => {
-	const [name, setName] = useState("");
-	const [age, setAge] = useState("");
+const UpdatePlayer = () => {
+	const {
+		state: { name, photo },
+		pathname,
+	} = useLocation();
+	const pathArray = pathname.split("/");
+	const playerId = pathArray[pathArray.length - 1];
+
 	const [season, setSeason] = useState("");
 	const [shirtNumber, setShirtNumber] = useState("");
 	const [leagueGames, setLeagueGames] = useState("");
@@ -28,32 +34,63 @@ const Add = () => {
 	const [redCards, setRedCards] = useState("");
 	const [hattricks, setHattricks] = useState("");
 	const [cleanSheets, setCleanSheets] = useState("");
-	const [photo, setPhoto] = useState("");
+
+	const i = (val: string) => parseInt(val);
+
+	const getData = () => {
+		const data = {
+			season: i(season),
+			shirtNumber: i(shirtNumber),
+			leagueGames: i(leagueGames),
+			cupGames: i(cupGames),
+			uclGames: i(uclGames),
+			leagueGoals: i(leagueGoals),
+			cupGoals: i(cupGoals),
+			uclGoals: i(uclGoals),
+			leagueAssists: i(leagueAssists),
+			cupAssists: i(cupAssists),
+			uclAssists: i(uclAssists),
+			rating: i(rating),
+			yellowCards: i(yellowCards),
+			redCards: i(redCards),
+			hattricks: i(hattricks),
+			cleanSheets: i(cleanSheets),
+		};
+
+		const totalGames = data.leagueGames + data.cupGames + data.uclGames;
+
+		const totalGoals = data.leagueGoals + data.cupGoals + data.uclGoals;
+
+		const totalAssists =
+			data.leagueAssists + data.cupAssists + data.uclAssists;
+
+		const totalContributions = totalGames + totalAssists;
+
+		const goalsPerGame = roundoff(totalGoals, totalGames);
+		const assistsPerGame = roundoff(totalAssists, totalGames);
+		const contributionsPerGame = roundoff(totalContributions, totalGames);
+		const cleanSheetsPerGame = roundoff(i(cleanSheets), totalGames);
+
+		const newData = {
+			...data,
+			totalGames,
+			totalGoals,
+			totalAssists,
+			totalContributions,
+			goalsPerGame,
+			assistsPerGame,
+			contributionsPerGame,
+			cleanSheetsPerGame,
+			playerId,
+			name,
+			photo,
+		};
+
+		return newData;
+	};
 	const [showAlert, setShowAlert] = useState<
 		null | "successful" | "unsuccessful"
 	>(null);
-
-	const clearStates = () => {
-		setName("");
-		setAge("");
-		setSeason("");
-		setShirtNumber("");
-		setLeagueGames("");
-		setCupGames("");
-		setUclGames("");
-		setLeagueGoals("");
-		setCupGoals("");
-		setUclGoals("");
-		setLeagueAssists("");
-		setCupAssists("");
-		setUclAssists("");
-		setRating("");
-		setYellowCards("");
-		setRedCards("");
-		setHattricks("");
-		setCleanSheets("");
-		setPhoto("");
-	};
 
 	const setAlert = (type: "successful" | "unsuccessful") => {
 		setShowAlert(type);
@@ -61,61 +98,12 @@ const Add = () => {
 			setShowAlert(null);
 		}, 2000);
 	};
-
-	const sendData = async (data: PlayerSeasonType) => {
-		const url = process.env.REACT_APP_API_URL + "/add";
-		const response = await axios.post(url, data);
-		if (response.data === 201) {
-			clearStates();
-			setAlert("successful");
-		} else {
-			setAlert("unsuccessful");
-		}
-	};
-
 	const handleClick = async () => {
-		const totalGames =
-			parseInt(leagueGames) + parseInt(cupGames) + parseInt(uclGames);
-		const totalGoals =
-			parseInt(leagueGoals) + parseInt(cupGoals) + parseInt(uclGoals);
-		const totalAssists =
-			parseInt(leagueAssists) +
-			parseInt(cupAssists) +
-			parseInt(uclAssists);
-		const goalsPerGame = roundoff(totalGoals, totalGames);
-		const contributions = totalGoals + totalAssists;
-		const contributionsPerGame = roundoff(contributions, totalGames);
-		const cleanSheetsPerGame = roundoff(parseInt(cleanSheets), totalGames);
-		const data = {
-			name: name,
-			age: parseInt(age),
-			season: parseInt(season),
-			shirtNumber: parseInt(season),
-			leagueGames: parseInt(leagueGames),
-			cupGames: parseInt(cupGames),
-			uclGames: parseInt(uclGames),
-			totalGames,
-			leagueGoals: parseInt(leagueGoals),
-			cupGoals: parseInt(cupGoals),
-			uclGoals: parseInt(uclGoals),
-			totalGoals,
-			leagueAssists: parseInt(leagueAssists),
-			cupAssists: parseInt(cupAssists),
-			uclAssists: parseInt(uclAssists),
-			totalAssists,
-			rating: parseFloat(rating),
-			yellowCards: parseInt(yellowCards),
-			redCards: parseInt(redCards),
-			hattricks: parseInt(hattricks),
-			contributions,
-			goalsPerGame,
-			contributionsPerGame,
-			cleanSheets: parseInt(cleanSheets),
-			cleanSheetsPerGame,
-			photo,
-		};
-		if (isFormComplete(data)) {
-			await sendData(data);
+		const formData = getData();
+		if (isComplete(formData)) {
+			const url = process.env.REACT_APP_API_URL + "/add-player-season";
+			const response = await axios.post(url, formData);
+			setAlert(response.data === 201 ? "successful" : "unsuccessful");
 		} else {
 			setAlert("unsuccessful");
 		}
@@ -125,29 +113,18 @@ const Add = () => {
 		<FormLayout>
 			{showAlert && <AlertBox type={showAlert} />}
 			<HorizontalLayout>
-				<Input
-					value={name}
-					setValue={setName}
-					placeholder="name"
-					type="text"
-					size="medium"
+				<h2>{name}</h2>
+				<img
+					src={photo}
+					alt="player"
+					width={200}
+					style={{
+						marginTop: "20px",
+					}}
 				/>
-				<Input
-					value={photo}
-					setValue={setPhoto}
-					placeholder="photo link"
-					type="text"
-					size="medium"
-				/>
+				<Button text="submit" size="small" handleClick={handleClick} />
 			</HorizontalLayout>
 			<HorizontalLayout>
-				<Input
-					value={age}
-					setValue={setAge}
-					placeholder="age"
-					type="number"
-					size="small"
-				/>
 				<Input
 					value={season}
 					setValue={setSeason}
@@ -271,8 +248,7 @@ const Add = () => {
 					size="small"
 				/>
 			</HorizontalLayout>
-			<Button text="submit" handleClick={handleClick} size="small" />
 		</FormLayout>
 	);
 };
-export default Add;
+export default UpdatePlayer;

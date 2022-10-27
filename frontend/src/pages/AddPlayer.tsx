@@ -4,7 +4,7 @@ import AlertBox from "../components/AlertBox";
 import Button from "../components/Button";
 import FormLayout from "../components/FormLayout";
 import Input from "../components/Input";
-import PlayerType from "../types/PlayerType";
+import isComplete from "../lib/isComplete";
 
 const AddPlayer = () => {
 	const [name, setName] = useState("");
@@ -29,21 +29,6 @@ const AddPlayer = () => {
 		setNationality("");
 		setPosition("");
 	};
-	const isComplete = (data: PlayerType) => {
-		const values = Object.values(data);
-		for (const value of values) {
-			if (typeof value === "string") {
-				if (value.length === 0) {
-					return false;
-				}
-			} else if (typeof value === "number") {
-				if (isNaN(value)) {
-					return false;
-				}
-			}
-		}
-		return true;
-	};
 	const handleClick = async () => {
 		const data = { name, photo, age: parseInt(age), nationality, position };
 		if (isComplete(data)) {
@@ -55,6 +40,8 @@ const AddPlayer = () => {
 			} else {
 				setAlert("unsuccessful");
 			}
+		} else {
+			setAlert("unsuccessful");
 		}
 	};
 

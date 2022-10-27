@@ -14,7 +14,7 @@ const PlayerOverview = ({
 	const navigate = useNavigate();
 
 	const handleClick = () => {
-		navigate(`/edit/update/${_id}`);
+		navigate(`/edit/update/${_id}`, { state: { name, photo } });
 	};
 
 	return (
@@ -28,12 +28,19 @@ const PlayerOverview = ({
 				padding: "10px",
 				cursor: "pointer",
 				justifyContent: "space-between",
+				alignItems: "center",
 			}}
 			onMouseEnter={() => setBorderColor("green")}
 			onMouseLeave={() => setBorderColor("black")}
 			onClick={handleClick}
 		>
-			<div style={{ display: "flex", flexDirection: "column" }}>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					width: "300px",
+				}}
+			>
 				<h1>{name}</h1>
 				<h1>{age}</h1>
 				<h1>{position}</h1>
@@ -42,6 +49,7 @@ const PlayerOverview = ({
 				src={`https://countryflagsapi.com/png/${nationality}`}
 				alt={`${nationality} flag`}
 				width={200}
+				height={100}
 			/>
 			<img src={photo} alt={name} width={200} />
 		</div>

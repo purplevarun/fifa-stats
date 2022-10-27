@@ -11,10 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// app.use("/add", addPlayerSeason);
-// app.use("/update", updatePlayerSeason);
 app.use("/add-player", addPlayer);
 app.use("/get-players", getPlayers);
+app.use("/add-player-season", addPlayerSeason);
 
 app.listen(PORT, () => {
 	console.log("express server started @", PORT);
