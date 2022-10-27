@@ -83,6 +83,10 @@ const PlayerSchema = new Schema({
 		type: Schema.Types.Number,
 		default: 0,
 	},
+	cleanSheets: {
+		type: Schema.Types.Number,
+		default: 0,
+	},
 	cleanSheetsPerGame: {
 		type: Schema.Types.Number,
 		default: 0,
