@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
 import Button from "../components/Button";
 import FormLayout from "../components/FormLayout";
@@ -96,8 +96,12 @@ const UpdatePlayer = () => {
 		setShowAlert(type);
 		setTimeout(() => {
 			setShowAlert(null);
+			if (type === "successful") {
+				navigate("/edit/update");
+			}
 		}, 2000);
 	};
+	const navigate = useNavigate();
 	const handleClick = async () => {
 		const formData = getData();
 		if (isComplete(formData)) {
