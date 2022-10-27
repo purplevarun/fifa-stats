@@ -28,15 +28,39 @@ const AddPlayer = () => {
 		setNationality("");
 		setPosition("");
 	};
+	type dataType = {
+		name: string;
+		photo: string;
+		age: number;
+		nationality: string;
+		position: string;
+	};
+	const isComplete = (data: dataType) => {
+		const values = Object.values(data);
+		for (const value of values) {
+			if (typeof value === "string") {
+				if (value.length === 0) {
+					return false;
+				}
+			} else if (typeof value === "number") {
+				if (isNaN(value)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	};
 	const handleClick = async () => {
-		const data = { name, photo, age, nationality, position };
-		const url = process.env.REACT_APP_API_URL + "/add-player";
-		const response = await axios.post(url, data);
-		if (response.data.status === 201) {
-			clearStates();
-			setAlert("successful");
-		} else {
-			setAlert("unsuccessful");
+		const data = { name, photo, age: parseInt(age), nationality, position };
+		if (isComplete(data)) {
+			const url = process.env.REACT_APP_API_URL + "/add-player";
+			const response = await axios.post(url, data);
+			if (response.data.status === 201) {
+				clearStates();
+				setAlert("successful");
+			} else {
+				setAlert("unsuccessful");
+			}
 		}
 	};
 
