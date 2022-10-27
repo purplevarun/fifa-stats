@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import Error from "../components/Error";
 import PageLayout from "../components/PageLayout";
+import PlayerOverview from "../components/PlayerOverview";
+import PlayerType from "../types/PlayerType";
 
 const SelectPlayerToUpdate = () => {
 	const { data, isLoading, error } = useQuery(["players"], async () => {
@@ -8,10 +11,18 @@ const SelectPlayerToUpdate = () => {
 		return response.json();
 	});
 
-	return (
-		<PageLayout>
-			<h1>hello world</h1>
-		</PageLayout>
-	);
+	if (isLoading) {
+		return <Error type="loading" />;
+	} else if (error) {
+		return <Error type="error" />;
+	} else {
+		return (
+			<PageLayout>
+				{data.map((item: PlayerType) => {
+					return <PlayerOverview {...item} key={item._id} />;
+				})}
+			</PageLayout>
+		);
+	}
 };
 export default SelectPlayerToUpdate;

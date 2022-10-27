@@ -4,6 +4,7 @@ import AlertBox from "../components/AlertBox";
 import Button from "../components/Button";
 import FormLayout from "../components/FormLayout";
 import Input from "../components/Input";
+import PlayerType from "../types/PlayerType";
 
 const AddPlayer = () => {
 	const [name, setName] = useState("");
@@ -28,14 +29,7 @@ const AddPlayer = () => {
 		setNationality("");
 		setPosition("");
 	};
-	type dataType = {
-		name: string;
-		photo: string;
-		age: number;
-		nationality: string;
-		position: string;
-	};
-	const isComplete = (data: dataType) => {
+	const isComplete = (data: PlayerType) => {
 		const values = Object.values(data);
 		for (const value of values) {
 			if (typeof value === "string") {

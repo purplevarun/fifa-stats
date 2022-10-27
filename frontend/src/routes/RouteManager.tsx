@@ -18,6 +18,10 @@ const RouteManager = () => {
 			<Route path="/edit" element={<Edit />} />
 			<Route path="/edit/add" element={<AddPlayer />} />
 			<Route path="/edit/update" element={<SelectPlayerToUpdate />} />
+			<Route
+				path="/edit/update/:playerID"
+				element={<SelectPlayerToUpdate />}
+			/>
 			<Route path="/edit/status" element={<Update />} />
 			<Route path="*" element={<Navigate to="/" replace />} />
 		</Routes>
