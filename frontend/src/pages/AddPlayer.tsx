@@ -30,7 +30,14 @@ const AddPlayer = () => {
 		setPosition("");
 	};
 	const handleClick = async () => {
-		const data = { name, photo, age: parseInt(age), nationality, position };
+		const data = {
+			name,
+			photo,
+			age: parseInt(age),
+			nationality,
+			position,
+			status: "active",
+		};
 		if (isComplete(data)) {
 			const url = process.env.REACT_APP_API_URL + "/add-player";
 			const response = await axios.post(url, data);
