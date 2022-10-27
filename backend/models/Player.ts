@@ -8,6 +8,6 @@ const PlayerSchema = new Schema({
 	photo: Schema.Types.String,
 });
 
-const Player = model("PlayerSeason", PlayerSchema);
+const Player = model("Player", PlayerSchema);
 
 export default Player;
