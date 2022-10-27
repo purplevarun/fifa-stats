@@ -6,7 +6,7 @@ const PlayerSeasonSchema = new Schema({
 	playerId: Schema.Types.String,
 	season: Schema.Types.Number,
 	shirtNumber: Schema.Types.Number,
-	leagueGame: Schema.Types.Number,
+	leagueGames: Schema.Types.Number,
 	cupGames: Schema.Types.Number,
 	uclGames: Schema.Types.Number,
 	leagueGoals: Schema.Types.Number,

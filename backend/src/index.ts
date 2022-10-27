@@ -8,6 +8,8 @@ import getPlayers from "./functions/getPlayers";
 const PORT = process.env.PORT as string;
 const app = express();
 app.use(express.json());
+app.use(express.raw({ type: "application/vnd.custom-type" }));
+app.use(express.text({ type: "text/html" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 

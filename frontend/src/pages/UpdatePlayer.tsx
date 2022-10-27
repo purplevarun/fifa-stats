@@ -66,7 +66,7 @@ const UpdatePlayer = () => {
 		const leagueContributions = data.leagueGoals + data.leagueAssists;
 		const cupContributions = data.cupGoals + data.cupAssists;
 		const uclContributions = data.uclGoals + data.uclAssists;
-		const totalContributions = totalGames + totalAssists;
+		const totalContributions = totalGoals + totalAssists;
 
 		const goalsPerGame = roundoff(totalGoals, totalGames);
 		const assistsPerGame = roundoff(totalAssists, totalGames);
