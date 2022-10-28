@@ -33,6 +33,6 @@ const PlayerSeasonSchema = new Schema({
 	cleanSheetsPerGame: Schema.Types.Number,
 });
 
-const PlayerSeasonModel = model("PlayerSeason", PlayerSeasonSchema);
+const PlayerSeason = model("PlayerSeason", PlayerSeasonSchema);
 
-export default PlayerSeasonModel;
+export default PlayerSeason;

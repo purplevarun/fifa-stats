@@ -1,6 +1,6 @@
 import { Router } from "express";
 import Player from "../../models/Player";
-import PlayerSeasonModel from "../../models/PlayerSeason";
+import PlayerSeason from "../../models/PlayerSeason";
 
 const router = Router();
 
@@ -12,8 +12,8 @@ const roundoff = (numerator: number, denominator: number) => {
 
 router.post("/", (req, res) => {
 	const body = req.body;
-	const newPlayerSeasonModel = new PlayerSeasonModel(body);
-	newPlayerSeasonModel
+	const newPlayerSeason = new PlayerSeason(body);
+	newPlayerSeason
 		.save()
 		.then(() => {
 			Player.findById(body.playerId, (err1: any, docs: any) => {
