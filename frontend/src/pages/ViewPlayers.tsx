@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Error from "../components/Error";
 import PageLayout from "../components/PageLayout";
 import PlayerDetails from "../components/PlayerDetails";
@@ -9,10 +8,8 @@ import PlayerType from "../types/PlayerType";
 
 const ViewPlayers = () => {
 	const [sortedData, setSortedData] = useState<null | PlayerType[]>(null);
-	const path = useLocation().pathname.split("/");
-	const initialSorter = path[path.length - 1];
 
-	const [sorter, setSorter] = useState(initialSorter);
+	const [sorter, setSorter] = useState("rating");
 
 	useEffect(() => {
 		const fetchData = async () => {
