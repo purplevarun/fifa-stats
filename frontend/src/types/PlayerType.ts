@@ -6,6 +6,7 @@ type PlayerType = {
 	position: string;
 	key?: string;
 	_id?: string;
+	updatePage?: string;
 };
 
 export default PlayerType;

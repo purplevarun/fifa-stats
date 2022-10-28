@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 import Error from "../components/Error";
 import PageLayout from "../components/PageLayout";
 import PlayerOverview from "../components/PlayerOverview";
@@ -11,6 +12,8 @@ const SelectPlayerToUpdate = () => {
 		return response.json();
 	});
 
+	const updatePage = useLocation().pathname;
+
 	if (isLoading) {
 		return <Error type="loading" />;
 	} else if (error) {
@@ -19,7 +22,8 @@ const SelectPlayerToUpdate = () => {
 		return (
 			<PageLayout>
 				{data.map((item: PlayerType) => {
-					return <PlayerOverview {...item} key={item._id} />;
+					const data = { ...item, key: item._id, updatePage };
+					return <PlayerOverview {...data} />;
 				})}
 			</PageLayout>
 		);

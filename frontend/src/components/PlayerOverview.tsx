@@ -9,12 +9,15 @@ const PlayerOverview = ({
 	nationality,
 	position,
 	_id,
+	updatePage,
 }: PlayerType) => {
 	const [borderColor, setBorderColor] = useState("black");
 	const navigate = useNavigate();
 
 	const handleClick = () => {
-		navigate(`/edit/update/${_id}`, { state: { name, photo } });
+		navigate(`${updatePage}/${_id}`, {
+			state: { name, photo },
+		});
 	};
 
 	return (

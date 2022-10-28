@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import FormLayout from "../components/FormLayout";
 import HorizontalLayout from "../components/HorizontalLayout";
 import Input from "../components/Input";
+import NamePhotoButton from "../components/NamePhotoButton";
 import isComplete from "../lib/isComplete";
 import roundoff from "../lib/roundoff";
 
@@ -120,18 +121,11 @@ const UpdatePlayer = () => {
 	return (
 		<FormLayout>
 			{showAlert && <AlertBox type={showAlert} />}
-			<HorizontalLayout>
-				<h2>{name}</h2>
-				<img
-					src={photo}
-					alt="player"
-					width={200}
-					style={{
-						marginTop: "20px",
-					}}
-				/>
-				<Button text="submit" size="small" handleClick={handleClick} />
-			</HorizontalLayout>
+			<NamePhotoButton
+				name={name}
+				photo={photo}
+				handleClick={handleClick}
+			/>
 			<HorizontalLayout>
 				<Input
 					value={season}
