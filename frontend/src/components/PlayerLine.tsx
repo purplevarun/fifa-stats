@@ -30,7 +30,7 @@ const PlayerLine = ({ player }: { player: PlayerType }) => {
 				style={{
 					display: "flex",
 					flexDirection: "column",
-					gap: "10px",
+					gap: "5px",
 				}}
 			>
 				<h2>{player.name}</h2>
@@ -38,10 +38,9 @@ const PlayerLine = ({ player }: { player: PlayerType }) => {
 				<img
 					src={`https://countryflagsapi.com/png/${player.nationality}`}
 					alt={`${player.nationality} flag`}
-					width={200}
+					width={160}
 					height={100}
 				/>
-				<br />
 				<h2>{player.rating}</h2>
 				<br />
 				<p>seasons [{seasons}]</p>
@@ -50,10 +49,8 @@ const PlayerLine = ({ player }: { player: PlayerType }) => {
 			<img
 				src={player.photo}
 				alt="player"
-				width={200}
-				style={{
-					marginTop: "20px",
-				}}
+				height={200}
+				style={{ alignSelf: "baseline" }}
 			/>
 		</div>
 	);
