@@ -32,8 +32,6 @@ const PlayerDetails = (player: PlayerType) => {
 						name="total games"
 						value={player.totalGames as number}
 					/>
-				</HorizontalLayout>
-				<HorizontalLayout>
 					<Entity
 						name="league goals"
 						value={player.leagueGoals as number}
@@ -68,8 +66,6 @@ const PlayerDetails = (player: PlayerType) => {
 						name="total assists"
 						value={player.totalAssists as number}
 					/>
-				</HorizontalLayout>
-				<HorizontalLayout>
 					<Entity
 						name="league contributions"
 						value={player.leagueContributions as number}
@@ -100,12 +96,12 @@ const PlayerDetails = (player: PlayerType) => {
 						name="contributions per game"
 						value={player.contributionsPerGame as number}
 					/>
-				</HorizontalLayout>
-				<HorizontalLayout>
 					<Entity
 						name="hattricks"
 						value={player.hattricks as number}
 					/>
+				</HorizontalLayout>
+				<HorizontalLayout>
 					<Entity
 						name="clean sheets"
 						value={player.cleanSheets as number}
@@ -114,8 +110,6 @@ const PlayerDetails = (player: PlayerType) => {
 						name="clean sheets per game"
 						value={player.cleanSheetsPerGame as number}
 					/>
-				</HorizontalLayout>
-				<HorizontalLayout>
 					<Entity
 						name="yellow cards"
 						value={player.yellowCards as number}

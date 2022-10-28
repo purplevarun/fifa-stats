@@ -18,6 +18,8 @@ const ViewPlayers = () => {
 	} else {
 		return (
 			<PageLayout>
+				<br />
+				<br />
 				{sortedData.map((item: PlayerType) => {
 					const playerData = { ...item, key: item._id };
 					return <PlayerDetails {...playerData} />;

@@ -5,7 +5,7 @@ const PlayerDetailsLayout = ({ children }: { children: ReactNode }) => {
 		<div
 			style={{
 				flexDirection: "column",
-				width: "800px",
+				width: "90%",
 				padding: "20px",
 				borderWidth: "4px",
 				borderStyle: "solid",
