@@ -1,8 +1,9 @@
 import PlayerSeasonType from "../types/PlayerSeasonType";
+import PlayerType from "../types/PlayerType";
 import Entity from "./Entity";
 import HorizontalLayout from "./HorizontalLayout";
 
-const PlayerData = ({ player }: { player: PlayerSeasonType }) => {
+const PlayerData = ({ player }: { player: PlayerSeasonType | PlayerType }) => {
 	return (
 		<div
 			style={{

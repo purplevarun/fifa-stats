@@ -77,7 +77,6 @@ router.post("/", (req, res) => {
 						contributionsPerGame: newContributionsPerGame,
 						cleanSheetsPerGame: newCleanSheetsPerGame,
 					};
-					console.log("newnewdata=", newNewData);
 
 					Player.findByIdAndUpdate(
 						body.playerId,

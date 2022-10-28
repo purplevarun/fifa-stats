@@ -21,6 +21,7 @@ const SelectPlayerToUpdate = () => {
 	} else {
 		return (
 			<PageLayout>
+				<br />
 				{data.map((item: PlayerType) => {
 					const data = { ...item, key: item._id, updatePage };
 					return <PlayerOverview {...data} />;

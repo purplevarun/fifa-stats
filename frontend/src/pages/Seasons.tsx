@@ -30,6 +30,7 @@ const Seasons = () => {
 	if (data) {
 		return (
 			<PageLayout>
+				<br />
 				<Sorter data={data} setSorter={setSorter} />
 				{data.map((item: PlayerSeasonType) => {
 					return <PlayerSeasonDetails player={item} key={item._id} />;
