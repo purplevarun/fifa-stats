@@ -7,7 +7,7 @@ import PlayerType from "../types/PlayerType";
 
 const SelectPlayerToUpdate = () => {
 	const { data, isLoading, error } = useQuery(["players"], async () => {
-		const url = process.env.REACT_APP_API_URL + "/get-players";
+		const url = process.env.REACT_APP_API_URL + "/get-players/rating";
 		const response = await fetch(url);
 		return response.json();
 	});

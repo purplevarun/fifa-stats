@@ -108,6 +108,7 @@ const PlayerSchema = new Schema({
 		default: 0,
 	},
 	redCards: { type: Schema.Types.Number, default: 0 },
+	rating: { type: Schema.Types.Number, default: 0 },
 });
 
 const Player = model("Player", PlayerSchema);

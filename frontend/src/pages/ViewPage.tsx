@@ -4,7 +4,7 @@ import PageLayout from "../components/PageLayout";
 const ViewPage = () => {
 	return (
 		<PageLayout>
-			<NavigationButton text="player stats" path="/view/players" />
+			<NavigationButton text="player stats" path="/view/players/rating" />
 			<NavigationButton text="season stats" path="/view/seasons" />
 		</PageLayout>
 	);

@@ -33,6 +33,7 @@ type PlayerType = {
 	shirtNumbers?: Array<number>;
 	yellowCards?: number;
 	redCards?: number;
+	rating?: number;
 };
 
 export default PlayerType;

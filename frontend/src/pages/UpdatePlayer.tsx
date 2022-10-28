@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
-import Button from "../components/Button";
 import FormLayout from "../components/FormLayout";
 import HorizontalLayout from "../components/HorizontalLayout";
 import Input from "../components/Input";

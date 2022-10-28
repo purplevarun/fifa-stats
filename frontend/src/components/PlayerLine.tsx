@@ -42,6 +42,8 @@ const PlayerLine = ({ player }: { player: PlayerType }) => {
 					height={100}
 				/>
 				<br />
+				<h2>{player.rating}</h2>
+				<br />
 				<p>seasons [{seasons}]</p>
 				<p>shirt numbers [{shirtNumbers}]</p>
 			</div>

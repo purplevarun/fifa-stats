@@ -3,10 +3,16 @@ import Player from "../../models/Player";
 
 const getPlayers = Router();
 
-getPlayers.get("/", (_, res) => {
-	Player.find({}, (_, docs) => {
-		res.json(docs);
-	});
+getPlayers.get("/:sortKey", (req, res) => {
+	const sorter = {};
+	// @ts-ignore:next-line
+	sorter[req.params.sortKey] = "desc";
+	Player.find({})
+		.sort(sorter)
+		// @ts-ignore:next-line
+		.exec((_, docs) => {
+			res.json(docs);
+		});
 });
 
 export default getPlayers;

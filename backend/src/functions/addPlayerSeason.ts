@@ -47,6 +47,11 @@ router.post("/", (req, res) => {
 						redCards: body.redCards + docs.redCards,
 						seasons: [body.season, ...docs.seasons],
 						shirtNumbers: [body.shirtNumber, ...docs.shirtNumbers],
+						rating: roundoff(
+							body.rating * body.totalGames +
+								docs.rating * docs.totalGames,
+							body.totalGames + docs.totalGames
+						),
 					};
 					const newGoalsPerGame = roundoff(
 						newData.totalGoals,

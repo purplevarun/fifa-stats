@@ -14,7 +14,7 @@ const RouteManager = () => {
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/view" element={<ViewPage />} />
-			<Route path="/view/players" element={<ViewPlayers />} />
+			<Route path="/view/players/:sorter" element={<ViewPlayers />} />
 			<Route path="/view/seasons" element={<ViewSeasons />} />
 			<Route path="/edit" element={<EditPage />} />
 			<Route path="/edit/add" element={<AddPlayer />} />
