@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AddPlayer from "../pages/AddPlayer";
 import EditPage from "../pages/EditPage";
 import HomePage from "../pages/HomePage";
+import Seasons from "../pages/Seasons";
 import SelectPlayerToUpdate from "../pages/SelectPlayerToUpdate";
 import UpdatePlayer from "../pages/UpdatePlayer";
 import UpdateStatus from "../pages/UpdateStatus";
@@ -16,6 +17,7 @@ const RouteManager = () => {
 			<Route path="/view" element={<ViewPage />} />
 			<Route path="/view/players" element={<ViewPlayers />} />
 			<Route path="/view/seasons" element={<ViewSeasons />} />
+			<Route path="/view/seasons/:seasonNumber" element={<Seasons />} />
 			<Route path="/edit" element={<EditPage />} />
 			<Route path="/edit/add" element={<AddPlayer />} />
 			<Route path="/edit/update" element={<SelectPlayerToUpdate />} />
