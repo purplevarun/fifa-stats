@@ -23,6 +23,14 @@ type PlayerSeasonType = {
 	contributions: number;
 	goalsPerGame: number;
 	contributionsPerGame: number;
+	leagueContributions?: number;
+	cupContributions?: number;
+	uclContributions?: number;
+	totalContributions?: number;
+	cleanSheets?: number;
+	cleanSheetsPerGame?: number;
+	assistsPerGame?: number;
+	_id?: string;
 };
 
 export default PlayerSeasonType;

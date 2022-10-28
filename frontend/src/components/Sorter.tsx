@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import keyType from "../types/keyType";
+import PlayerSeasonType from "../types/PlayerSeasonType";
 import PlayerType from "../types/PlayerType";
 import valueType from "../types/valueType";
 
 type Props = {
-	data: PlayerType[];
+	data: PlayerType[] | PlayerSeasonType[];
 	setSorter: (newSorter: string) => void;
 };
 
