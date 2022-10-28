@@ -29,8 +29,10 @@ type PlayerType = {
 	cleanSheets?: number;
 	cleanSheetsPerGame?: number;
 	hattricks?: number;
-	seasons?: number;
-	shirtNumbers?: number;
+	seasons?: Array<number>;
+	shirtNumbers?: Array<number>;
+	yellowCards?: number;
+	redCards?: number;
 };
 
 export default PlayerType;

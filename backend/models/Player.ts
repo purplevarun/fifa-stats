@@ -103,6 +103,11 @@ const PlayerSchema = new Schema({
 		type: Schema.Types.Array,
 		default: [],
 	},
+	yellowCards: {
+		type: Schema.Types.Number,
+		default: 0,
+	},
+	redCards: { type: Schema.Types.Number, default: 0 },
 });
 
 const Player = model("Player", PlayerSchema);

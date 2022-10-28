@@ -43,6 +43,8 @@ router.post("/", (req, res) => {
 							body.totalContributions + docs.totalContributions,
 						hattricks: body.hattricks + docs.hattricks,
 						cleanSheets: body.cleanSheets + docs.cleanSheets,
+						yellowCards: body.yellowCards + docs.yellowCards,
+						redCards: body.redCards + docs.redCards,
 						seasons: [body.season, ...docs.seasons],
 						shirtNumbers: [body.shirtNumber, ...docs.shirtNumbers],
 					};

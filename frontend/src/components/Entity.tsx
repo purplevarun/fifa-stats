@@ -5,9 +5,11 @@ const Entity = ({ name, value }: { name: string; value: string | number }) => {
 				display: "flex",
 				flexDirection: "column",
 				gap: "5px",
+				width: "200px",
+				padding: "10px",
 			}}
 		>
-			<h2>{name}</h2>
+			<p>{name}</p>
 			<div
 				style={{
 					borderWidth: "2px",
