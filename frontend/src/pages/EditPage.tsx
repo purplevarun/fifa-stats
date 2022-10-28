@@ -1,7 +1,7 @@
-import NavigationButton from "../../components/NavigationButton";
-import PageLayout from "../../components/PageLayout";
+import NavigationButton from "../components/NavigationButton";
+import PageLayout from "../components/PageLayout";
 
-const Edit = () => {
+const EditPage = () => {
 	return (
 		<PageLayout>
 			<NavigationButton text="add player" path="/edit/add" />
@@ -10,4 +10,4 @@ const Edit = () => {
 		</PageLayout>
 	);
 };
-export default Edit;
+export default EditPage;

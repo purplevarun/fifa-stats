@@ -1,7 +1,7 @@
-import NavigationButton from "../../components/NavigationButton";
-import PageLayout from "../../components/PageLayout";
+import NavigationButton from "../components/NavigationButton";
+import PageLayout from "../components/PageLayout";
 
-const View = () => {
+const ViewPage = () => {
 	return (
 		<PageLayout>
 			<NavigationButton text="player stats" path="/view/players" />
@@ -9,4 +9,4 @@ const View = () => {
 		</PageLayout>
 	);
 };
-export default View;
+export default ViewPage;

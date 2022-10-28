@@ -1,23 +1,22 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AddPlayer from "../pages/AddPlayer";
-import Edit from "../pages/Edit/Edit";
-import Home from "../pages/Home/Home";
-import Players from "../pages/Players/Players";
-import Seasons from "../pages/Seasons/Seasons";
+import EditPage from "../pages/EditPage";
+import HomePage from "../pages/HomePage";
 import SelectPlayerToUpdate from "../pages/SelectPlayerToUpdate";
-import Update from "../pages/Update/Update";
 import UpdatePlayer from "../pages/UpdatePlayer";
 import UpdateStatus from "../pages/UpdateStatus";
-import View from "../pages/View/View";
+import ViewPage from "../pages/ViewPage";
+import ViewPlayers from "../pages/ViewPlayers";
+import ViewSeasons from "../pages/ViewSeasons";
 
 const RouteManager = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/view" element={<View />} />
-			<Route path="/view/players" element={<Players />} />
-			<Route path="/view/seasons" element={<Seasons />} />
-			<Route path="/edit" element={<Edit />} />
+			<Route path="/" element={<HomePage />} />
+			<Route path="/view" element={<ViewPage />} />
+			<Route path="/view/players" element={<ViewPlayers />} />
+			<Route path="/view/seasons" element={<ViewSeasons />} />
+			<Route path="/edit" element={<EditPage />} />
 			<Route path="/edit/add" element={<AddPlayer />} />
 			<Route path="/edit/update" element={<SelectPlayerToUpdate />} />
 			<Route path="/edit/update/:playerID" element={<UpdatePlayer />} />
