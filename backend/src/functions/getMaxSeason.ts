@@ -4,6 +4,7 @@ import PlayerSeason from "../../models/PlayerSeason";
 const getMaxSeason = Router();
 
 getMaxSeason.get("/", (_, res) => {
+	console.log("--> get max season");
 	let maxSeason = 0;
 	PlayerSeason.find({}, (_, docs) => {
 		docs.forEach((doc: any) => {

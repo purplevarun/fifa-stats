@@ -4,6 +4,7 @@ import Player from "../../models/Player";
 const getPlayers = Router();
 
 getPlayers.get("/:sortKey", (req, res) => {
+	console.log("--> get players");
 	const sorter = {};
 	// @ts-ignore:next-line
 	sorter[req.params.sortKey] = "desc";

@@ -4,6 +4,7 @@ import PlayerSeason from "../../models/PlayerSeason";
 const getSpecificSeason = Router();
 
 getSpecificSeason.get("/:seasonNumber/:sorter", (req, res) => {
+	console.log("--> get specific season");
 	const sorter = {};
 	// @ts-ignore:next-line
 	sorter[req.params.sorter] = "desc";

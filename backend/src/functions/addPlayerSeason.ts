@@ -11,6 +11,7 @@ const roundoff = (numerator: number, denominator: number) => {
 };
 
 router.post("/", (req, res) => {
+	console.log("--> add new player season");
 	const body = req.body;
 	const newPlayerSeason = new PlayerSeason(body);
 	newPlayerSeason
@@ -18,6 +19,7 @@ router.post("/", (req, res) => {
 		.then(() => {
 			Player.findById(body.playerId, (err1: any, docs: any) => {
 				if (err1) {
+					console.log("ERROR = ", err1);
 					res.json(400);
 				} else {
 					const newData = {
@@ -84,8 +86,10 @@ router.post("/", (req, res) => {
 						{ useFindAndModify: false },
 						(err2) => {
 							if (err2) {
+								console.log("ERROR = ", err2);
 								res.json(400);
 							} else {
+								console.log("added new player season");
 								res.json(201);
 							}
 						}

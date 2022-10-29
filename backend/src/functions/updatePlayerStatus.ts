@@ -4,6 +4,7 @@ import Player from "../../models/Player";
 const updatePlayerStatus = Router();
 
 updatePlayerStatus.put("/", (req, res) => {
+	console.log("--> update player status");
 	const playerId = req.body.playerId;
 	const newStatus = req.body.newStatus;
 
