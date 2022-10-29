@@ -8,7 +8,7 @@
 	"scripts": {
 		"dev": "nodemon src/index.ts",
 		"build": "tsc",
-		"start": "node dist/src/index.js",
+		"start": "ls -al && node dist/src/index.js",
 		"clean": "rm -rf node_modules yarn.lock && yarn"
 	},
 	"dependencies": {
